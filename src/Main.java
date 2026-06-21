@@ -11,8 +11,6 @@ public class Main {
 
         File path = new File(strPath);
 
-
-
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 
             String line = br.readLine();
@@ -22,15 +20,12 @@ public class Main {
                 line = br.readLine();
             }
 
-            System.out.println("New folder");
-            System.out.print("Enter a folder path: ");
-            String newpath = sc.nextLine();
+            String newpath = path.getParent();
+            File outDir = new File(newpath + "\\out");
+            if (!outDir.exists()) {
+                outDir.mkdir();
+            }
 
-
-            boolean sucess = new File(newpath + "\\out").mkdir();
-            System.out.println("Diretory created sucessfully: " + sucess);
-
-        
 
 
         } catch (IOException e) {
